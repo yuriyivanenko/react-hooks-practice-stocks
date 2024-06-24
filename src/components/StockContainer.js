@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Stock from './Stock'
 
-function StockContainer({ handleStockClick, sortBy }) {
+function StockContainer({ handleStockClick, sortBy, filterBy }) {
   const [stockList, setStockList] = useState(null)
 
   useEffect(() => {
@@ -19,12 +19,13 @@ function StockContainer({ handleStockClick, sortBy }) {
   }
 
   const sortedList = sortBy ? sortStocks() : stockList
+  const filteredList = filterBy ? [...sortedList].filter((stock) => stock.type === filterBy) : sortedList
 
   if (!stockList) return <h1>Loading...</h1>
   return (
     <div>
       <h2>Stocks</h2>
-      {sortedList.map((stock) => {
+      {filteredList.map((stock) => {
         return <Stock key={`stock-${stock.id}`} handleStockClick={handleStockClick} stockInfo={stock} />
       })}
     </div>

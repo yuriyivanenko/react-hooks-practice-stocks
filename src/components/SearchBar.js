@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-function SearchBar({ handleChangeSort }) {
+function SearchBar({ handleChangeSort, setFilterBy }) {
   const handleSortChange = ({ target }) => {
     handleChangeSort(target.value)
+  }
+
+  const filterChange = ({ target }) => {
+    setFilterBy(target.value)
   }
 
   return (
@@ -19,7 +23,8 @@ function SearchBar({ handleChangeSort }) {
       <br />
       <label>
         <strong>Filter:</strong>
-        <select onChange={null}>
+        <select onChange={filterChange}>
+          <option value=''>Select...</option>
           <option value='Tech'>Tech</option>
           <option value='Sportswear'>Sportswear</option>
           <option value='Finance'>Finance</option>
