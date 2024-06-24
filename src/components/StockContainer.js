@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Stock from './Stock'
 
-function StockContainer() {
+function StockContainer({ handleStockToBuy }) {
   const [stockList, setStockList] = useState(null)
 
   useEffect(() => {
@@ -15,7 +15,7 @@ function StockContainer() {
     <div>
       <h2>Stocks</h2>
       {stockList.map((stock) => {
-        return <Stock key={`stock-${stock.id}`} stockInfo={stock} />
+        return <Stock key={`stock-${stock.id}`} handleStockToBuy={handleStockToBuy} stockInfo={stock} />
       })}
     </div>
   )
