@@ -5,14 +5,14 @@ import SearchBar from './SearchBar'
 
 function MainContainer() {
   const [stockToBuy, setStockToBuy] = useState(null)
-  const handleStockToBuy = (stock) => setStockToBuy(stock)
+  const handleStockClick = (stock) => setStockToBuy(stock)
 
   return (
     <div>
       <SearchBar />
       <div className='row'>
         <div className='col-8'>
-          <StockContainer handleStockToBuy={handleStockToBuy} />
+          <StockContainer handleStockClick={handleStockClick} />
         </div>
         <div className='col-4'>
           <PortfolioContainer stockToBuy={stockToBuy} />

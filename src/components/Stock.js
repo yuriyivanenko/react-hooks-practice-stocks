@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Stock({ stockInfo, handleStockToBuy }) {
+function Stock({ stockInfo, handleStockClick }) {
   const { ticker, name, price } = stockInfo
   const handleOnClick = () => {
-    handleStockToBuy(stockInfo)
+    handleStockClick(stockInfo)
   }
   return (
     <div>

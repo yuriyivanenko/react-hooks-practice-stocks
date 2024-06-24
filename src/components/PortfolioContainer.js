@@ -10,19 +10,19 @@ function PortfolioContainer({ stockToBuy }) {
 
       if (!stockExists) {
         setPortfolioList((prevList) => [...prevList, stockToBuy])
-      } else {
-        alert('You already own this stock')
       }
     }
   }, [stockToBuy])
 
-  const doNothing = () => {}
+  const handleRemoveStock = (stockClicked) => {
+    setPortfolioList(portfolioList.filter((stock) => stock.ticker !== stockClicked.ticker))
+  }
 
   return (
     <div>
       <h2>My Portfolio</h2>
       {portfolioList.map((item) => {
-        return <Stock key={item.name} stockInfo={item} handleStockToBuy={doNothing} />
+        return <Stock key={item.name} stockInfo={item} handleStockClick={handleRemoveStock} />
       })}
     </div>
   )
